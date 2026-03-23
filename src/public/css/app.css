@@ -1,0 +1,1424 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    background: #f5f5f5;
+    /* ←薄グレー統一 */
+}
+
+/* ===== header（統一版）===== */
+.header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    background: #f5f5f5;
+    padding: 0;
+    /* ← header側は0に */
+}
+
+/* 左上ボタン（ハンバーガー/×）はこれで統一 */
+.header__btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    background: #2b5cff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, .3);
+}
+
+.header__inner {
+    width: var(--container);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+}
+
+.header__left {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex: 0 0 auto;
+}
+
+.header__right {
+    display: flex;
+    justify-content: flex-end;
+    flex: 1 1 auto;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 700;
+    color: #305dff;
+    text-decoration: none;
+    position: static;
+}
+
+/* ハンバーガー（ここは残してOK） */
+.menu-btn {
+    position: static;
+    width: 40px;
+    height: 40px;
+    background: #2b5cff;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.menu-btn__lines {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    ;
+    justify-content: space-between;
+    width: 18px;
+    height: 16px;
+    align-items: flex-start;
+    line-height: 0;
+}
+
+.menu-btn__lines span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: #fff;
+    border-radius: 2px;
+}
+
+.menu-btn__lines span:nth-child(1) {
+    width: 16px;
+}
+
+.menu-btn__lines span:nth-child(2) {
+    width: 24px;
+}
+
+.menu-btn__lines span:nth-child(3) {
+    width: 10px;
+}
+
+.header--menu .header__inner {
+    justify-content: flex-start;
+}
+
+.menu-btn--close {
+    width: 40px;
+    height: 40px;
+    background: #2b5cff;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, .3);
+}
+
+.menu-btn__x {
+    color: #fff;
+    font-size: 26px;
+    line-height: 1;
+    transform: translateY(-1px);
+}
+
+/* 検索ボックス */
+.header-search {
+    width: 100%;
+    max-width: 600px;
+    /* ←見本っぽい長さ。好みで調整 */
+}
+
+/* 検索ブロックは右寄せ＆幅固定 */
+.header-search {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* 検索フォーム全体を1本のバーにする */
+.search {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 620px;
+    /* ここは好みで */
+    height: 44px;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.18);
+    overflow: hidden;
+    /* 角丸を効かせる */
+}
+
+/* grid は main(container) の幅いっぱいに */
+.grid {
+    width: 100%;
+}
+
+/* 3ブロックを横並び */
+.search__selectWrap {
+    position: relative;
+    flex: 0 0 140px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/* select本体 */
+.search__select {
+    border: none;
+    outline: none;
+    appearance: none;
+    background: transparent;
+    padding: 0 20px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 36px;
+    background: #fff;
+}
+
+/* ジャンル｜Search の区切り線 */
+.search__inputWrap::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    /* ← ほぼ上まで */
+    bottom: 10px;
+    /* ← ほぼ下まで */
+    width: 1px;
+    background: #eee;
+}
+
+/* 縦線 */
+.search__selectWrap::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 10px;
+    bottom: 10px;
+    width: 1px;
+    background: #eee;
+}
+
+/* input + 虫眼鏡 */
+.search__inputWrap {
+    flex: 1 1 auto;
+    /* 残り全部 */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    gap: 8px;
+}
+
+.search__input {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    outline: none;
+    background: transparent;
+    padding-left: 10px;
+}
+
+/* 虫眼鏡アイコン（CSSだけで描画） */
+.search__icon {
+    width: 26px;
+    height: 26px;
+    flex: 0 0 26px;
+    display: block;
+    opacity: 0.85;
+    filter: none;
+}
+
+.search__icon-circle {
+    fill: none;
+    stroke: #e7e7e7;
+    stroke-width: 5.5;
+}
+
+.search__icon-handle {
+    stroke: #e7e7e7;
+    stroke-width: 6;
+    stroke-linecap: round;
+}
+
+.search__icon-highlight {
+    fill: none;
+    stroke: #f1f1f1;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+}
+
+.search__arrow {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    width: 16px;
+    height: 16px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    display: block;
+}
+
+.search__arrow path {
+    fill: #e5e5e5;
+}
+
+/* ===== top page layout ===== */
+.wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 0;
+}
+
+/* ===== Shop cards grid (final override) ===== */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+    align-items: start;
+}
+
+.card {
+    overflow: visible;
+    /* ←ここ超重要 */
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, .3);
+}
+
+/* 画像だけ角丸で切りたいなら、img側に効かせる */
+.img {
+    width: 100%;
+    display: block;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.body {
+    padding: 12px;
+}
+
+.name {
+    font-weight: 700;
+    margin: 0 0 8px;
+}
+
+.meta {
+    font-size: 12px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 6px 10px;
+    background: #2b5cff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+.pager {
+    margin-top: 18px;
+}
+
+/* 画面が狭くなったら列数を落とす */
+@media (max-width: 1100px) {
+    .grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 820px) {
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 520px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+:root {
+    --container: min(1100px, 92%);
+}
+
+.container {
+    width: min(1100px, 92%);
+    margin: 0 auto;
+}
+
+/* ===== 共通リセット ===== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+/* ===== 予約完了画面 ===== */
+.complete {
+    min-height: calc(100vh - 60px);
+    /* header 高さぶん引く */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.complete__card {
+    background-color: #fff;
+    width: 360px;
+    padding: 48px 32px;
+    border-radius: 6px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.complete__message {
+    font-size: 16px;
+    margin-bottom: 32px;
+    letter-spacing: 0.05em;
+}
+
+.complete__button {
+    display: inline-block;
+    width: 100%;
+    padding: 12px 0;
+    background-color: #305dff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.complete__button:hover {
+    opacity: 0.9;
+}
+
+
+/* ===== center card ===== */
+.center {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+}
+
+.panel {
+    width: min(560px, 92vw);
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    padding: 60px 24px;
+    text-align: center;
+}
+
+.panel__message {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 28px;
+}
+
+.btn-wrap {
+    display: flex;
+    justify-content: flex-end;
+    /* ← 右寄せ */
+    margin-top: 18px;
+}
+
+.btn {
+    background: #2F5BFF;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    /* box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); */
+    transition: 0.2s;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+/* ===== menu ===== */
+.menu {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+}
+
+.menu__link {
+    font-size: 28px;
+    color: #2b5cff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.menu__button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+/* 入力1行（アイコン＋入力） */
+.input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 4px;
+    border-bottom: 2px solid #333;
+}
+
+/* SVGアイコン */
+.icon {
+    width: 22px;
+    height: 22px;
+    flex: 0 0 22px;
+    fill: #333;
+    opacity: 0.85;
+}
+
+/* 入力 */
+.input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 16px;
+    border-bottom: 1px solid #333;
+    border-radius: 0;
+    padding: 8px 0;
+    box-shadow: none;
+}
+
+/* inputは枠線なし・背景なし・伸びる */
+.auth-input {
+    flex: 1;
+    /* これが超重要：横に伸びる */
+    width: 100%;
+    border: none;
+    /* ここで枠線を消す */
+    outline: none;
+    background: transparent;
+    padding: 0;
+    /* 余計な四角感を消す */
+    font-size: 14px;
+    color: #333;
+    box-shadow: none;
+}
+
+.auth-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 4px 0;
+    border-bottom: 1px solid #333;
+    /* 行の下線をここで引く方法もアリ */
+}
+
+/* もし行で下線引くなら input の border-bottom は消す */
+.auth-row .auth-input {
+    border-bottom: none;
+}
+
+.auth-icon {
+    width: 28px;
+    display: grid;
+    place-items: center;
+    color: #444
+}
+
+.auth-svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+.auth-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 16x;
+}
+
+.auth-btn {
+    border: none;
+    background: #2f5bff;
+    color: #fff;
+    cursor: pointer;
+    width: auto;
+    /* 100%をやめる */
+    padding: 8px 18px;
+    /* 小さめ */
+    border-radius: 6px;
+}
+
+/* エラー表示（必要なら） */
+.error {
+    margin-top: 6px;
+    font-size: 12px;
+    color: #e3342f;
+}
+
+.error-message {
+    margin: 12px 0 20px;
+    padding: 10px 14px;
+    background: #ffeaea;
+    color: #d93025;
+    border-radius: 6px;
+    font-size: 10px;
+}
+
+.error-box {
+    margin-bottom: 12px;
+    color: #d00;
+}
+
+.error-list {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 14px 12px;
+}
+
+/* クリックできるハート（ボタン/スパン両対応） */
+/* クリックできるハート（ボタン/スパン両対応） */
+/* ハート：実サイズを大きくして縮小表示 */
+/* heart */
+/* ===== Perfect heart (SVG mask) ===== */
+/* SVG版ハート（欠けない） */
+.heart {
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    transform: none;
+    /* ← CSSハートの回転を殺す */
+    box-shadow: none;
+}
+
+.heart-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    fill: #d9d9d9;
+    /* ← 中を塗る */
+    stroke: none;
+    /* ← 線だけになるのを防ぐ */
+}
+
+.heart.is-on .heart-svg {
+    fill: #ff2b2b;
+    /* ON */
+    filter: drop-shadow(0 2px 4px rgba(255, 43, 43, .25));
+}
+
+/* 未ログイン */
+.heart.is-off {
+    opacity: .45;
+    pointer-events: none;
+}
+
+.detail {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    padding: 0;
+    /* ← これ大事。左右はcontainerが担当 */
+    margin: 0;
+}
+
+.detail__left {
+    flex: 1;
+    max-width: 650px;
+}
+
+.detail__head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.detail__back {
+    width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+    color: #333;
+    font-weight: 700;
+}
+
+.detail__name {
+    font-size: 22px;
+    margin: 0;
+}
+
+.detail__img {
+    width: 100%;
+    max-width: 520px;
+    border-radius: 6px;
+    display: block;
+}
+
+.detail__tags {
+    margin: 14px 0 10px;
+    font-weight: 700;
+}
+
+.detail__desc {
+    line-height: 1.8;
+    color: #333;
+}
+
+.reserve {
+    width: 420px;
+    background: #2f55ff;
+    border-radius: 8px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+    color: #fff;
+    padding: 26px 26px 0px;
+}
+
+.reserve__title {
+    margin: 0 0 16px;
+    font-size: 20px;
+}
+
+.reserve__form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 560px;
+    /* 見本みたいに縦長にして下に落とす */
+}
+
+/* 日付だけ短くする */
+.reserve__input.reserve__input--date {
+    width: 160px;
+}
+
+.reserve__input {
+    width: 100%;
+    height: 36px;
+    border-radius: 4px;
+    border: none;
+    padding: 0 10px;
+    background: #fff;
+    color: #333;
+}
+
+.reserve__summary {
+    margin-top: 10px;
+    background: rgba(255, 255, 255, 0.18);
+    border-radius: 6px;
+    padding: 14px;
+}
+
+.reserve__row {
+    display: flex;
+    gap: 14px;
+    padding: 4px 0;
+}
+
+.reserve__row span:first-child {
+    width: 70px;
+    font-weight: 700;
+}
+
+/* ボタンを一番下＆横いっぱい */
+.reserve__submit {
+    margin-top: auto;
+    width: calc(100% + 52px);
+    /* 26px × 2 */
+    margin-left: -26px;
+    margin-right: -26px;
+
+    height: 48px;
+    border: none;
+    border-radius: 0 0 8px 8px;
+    background: #173bff;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    display: block;
+}
+
+/* select右端の薄い矢印を作る */
+.reserve__select {
+    position: relative;
+}
+
+.reserve__select::after {
+    content: "";
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    /* border-right: 2px solid rgba(0, 0, 0, 0.25); */
+    border-bottom: 2px solid rgba(0, 0, 0, 0.25);
+    transform: translateY(-65%) rotate(45deg);
+    pointer-events: none;
+}
+
+/* selectのデフォ矢印を消す（ブラウザ差対策） */
+.reserve__select select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 34px;
+    /* 矢印のぶん余白 */
+}
+
+.reserve__error {
+    margin-top: 6px;
+    font-size: 12px;
+    color: #ffd7d7;
+}
+
+main,
+.main {
+    padding-top: 72px;
+}
+
+.auth-card {
+    width: 360px;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+.auth-card__head {
+    background: #2f55ff;
+    color: #fff;
+    padding: 12px 16px;
+    font-weight: 700;
+}
+
+.auth-card__body {
+    padding: 20px 24px;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.form-icon {
+    width: 22px;
+    height: 22px;
+    flex: 0 0 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666666;
+}
+
+.auth-svg {
+    width: 22px;
+    height: 22px;
+    display: block;
+}
+
+.form-row input {
+    flex: 1;
+    border: none;
+    border-bottom: 1px solid #666;
+    outline: none;
+    padding: 6px 0;
+    font-size: 18px;
+    background: transparent;
+}
+
+.form-row input:focus {
+    outline: none;
+    border-bottom-color: #2f55ff;
+}
+
+.auth-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.auth-submit {
+    background: #2f55ff;
+    color: #fff;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.center-card {
+    width: 420px;
+    margin: 180px auto 0;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, .2);
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.center-card__title {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 18px;
+}
+
+.center-card__btn {
+    display: inline-block;
+    background: #2f55ff;
+    color: #fff;
+    padding: 8px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+/* ===== mypage ===== */
+.mypage {
+    padding: 40px 0;
+}
+
+.mypage__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.mypage__username {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 10px 0 16px;
+}
+
+.mypage__grid {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.mypage__title {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 10px 0 16px;
+}
+
+/* 予約カード */
+.reserve-card {
+    background: #2f58ff;
+    color: #fff;
+    border-radius: 6px;
+    padding: 18px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, .12);
+    margin-bottom: 18px;
+}
+
+.reserve-card__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.reserve-card__head-left {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.reserve-card__close {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+}
+
+.reserve-card__dl {
+    display: grid;
+    gap: 10px;
+}
+
+.reserve-card__row {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 10px;
+}
+
+.reserve-card__row dd {
+    margin: 0;
+}
+
+.flash-message {
+    margin: 12px 0 20px;
+    padding: 10px 14px;
+    background: #e8f4ff;
+    color: #305dff;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.reserve-card__input,
+.reserve-card__select {
+    width: 180px;
+    padding: 4px 8px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.reserve-card__actions {
+    margin-top: 16px;
+    text-align: right;
+}
+
+.reserve-card__update-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    background: #1f49ff;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* お気に入り（右） */
+.shop-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(240px, 1fr));
+    gap: 24px;
+}
+
+.shop-card {
+    background: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, .12);
+}
+
+.shop-card__img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    display: block;
+}
+
+.shop-card__body {
+    padding: 14px;
+}
+
+.shop-card__name {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 6px;
+}
+
+.shop-card__meta {
+    margin: 0 0 10px;
+    font-size: 12px;
+    color: #333;
+}
+
+.shop-card__actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 6px;
+    background: #2f58ff;
+    color: #fff;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.mypage__spacer {
+    height: 57px;
+}
+
+/* =========================
+   Responsive
+========================= */
+
+/* タブレット */
+@media (max-width: 1024px) {
+    .header__inner {
+        padding: 16px 20px;
+        gap: 16px;
+    }
+
+    .header__left {
+        gap: 12px;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+
+    .search {
+        max-width: 100%;
+    }
+
+    .detail {
+        gap: 24px;
+    }
+
+    .reserve {
+        width: 380px;
+    }
+
+    .mypage__grid {
+        grid-template-columns: 320px 1fr;
+        gap: 24px;
+    }
+
+    .shop-grid {
+        grid-template-columns: repeat(2, minmax(220px, 1fr));
+        gap: 16px;
+    }
+}
+
+/* スマホ */
+@media (max-width: 768px) {
+
+    main,
+    .main {
+        padding-top: 24px;
+    }
+
+    .header {
+        position: static;
+    }
+
+    .header__inner {
+        width: 100%;
+        padding: 16px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+    }
+
+    .header__left,
+    .header__right {
+        width: 100%;
+    }
+
+    .header__right {
+        justify-content: stretch;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+
+    .wrap {
+        padding: 16px;
+    }
+
+    /* 検索バーを縦並び */
+    .search {
+        height: auto;
+        flex-direction: column;
+        align-items: stretch;
+        overflow: visible;
+    }
+
+    .search__selectWrap,
+    .search__inputWrap {
+        flex: none;
+        width: 100%;
+        height: 44px;
+    }
+
+    .search__selectWrap::after,
+    .search__inputWrap::before {
+        display: none;
+    }
+
+    .search__select {
+        width: 100%;
+        padding: 0 40px 0 14px;
+        height: 44px;
+    }
+
+    .search__inputWrap {
+        padding: 0 14px;
+        border-top: 1px solid #eee;
+    }
+
+    .search__input {
+        font-size: 14px;
+    }
+
+    /* 店舗一覧 */
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    /* 店舗詳細 */
+    .detail {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .detail__left,
+    .reserve {
+        width: 100%;
+        max-width: none;
+    }
+
+    .detail__img {
+        max-width: 100%;
+    }
+
+    .reserve {
+        padding: 20px 20px 0;
+    }
+
+    .reserve__form {
+        min-height: auto;
+    }
+
+    .reserve__input.reserve__input--date {
+        width: 100%;
+    }
+
+    .reserve__submit {
+        width: calc(100% + 40px);
+        margin-left: -20px;
+        margin-right: -20px;
+    }
+
+    /* マイページ */
+    .mypage {
+        padding: 24px 0;
+    }
+
+    .mypage__inner {
+        padding: 0 16px;
+    }
+
+    .mypage__grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .mypage__spacer {
+        display: none;
+    }
+
+    .mypage__username {
+        font-size: 24px;
+        margin-top: 0;
+    }
+
+    .reserve-card__row {
+        grid-template-columns: 72px 1fr;
+        gap: 8px;
+    }
+
+    .reserve-card__input,
+    .reserve-card__select {
+        width: 100%;
+        max-width: 220px;
+    }
+
+    .shop-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .shop-card__img {
+        height: 180px;
+    }
+}
+
+/* 小さめスマホ */
+@media (max-width: 480px) {
+    .header__inner {
+        padding: 12px;
+    }
+
+    .wrap {
+        padding: 12px;
+    }
+
+    .detail__name {
+        font-size: 20px;
+    }
+
+    .reserve__title,
+    .mypage__title {
+        font-size: 18px;
+    }
+
+    .reserve-card {
+        padding: 14px;
+    }
+
+    .reserve-card__row {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+
+    .reserve-card__input,
+    .reserve-card__select {
+        width: 100%;
+        max-width: none;
+    }
+
+    .reserve-card__actions {
+        text-align: center;
+    }
+
+    .reserve-card__update-btn {
+        width: 100%;
+    }
+
+    .shop-card__actions {
+        gap: 12px;
+    }
+}
+
+.header__search {
+    width: 100%;
+    max-width: 600px;
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.review-section {
+    margin-top: 40px;
+    background: #fff;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, .08);
+}
+
+.review-section__title {
+    margin: 0 0 16px;
+    font-size: 22px;
+}
+
+.review-section__summary {
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.review-form {
+    margin-bottom: 24px;
+}
+
+.review-form__row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.review-form__input,
+.review-form__textarea {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 14px;
+    background: #fff;
+}
+
+.review-form__textarea {
+    resize: vertical;
+}
+
+.review-form__btn {
+    border: none;
+    background: #2f58ff;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.review-list {
+    display: grid;
+    gap: 14px;
+}
+
+.review-card {
+    border-top: 1px solid #eee;
+    padding-top: 14px;
+}
+
+.review-card__meta {
+    margin: 0 0 8px;
+    font-weight: 700;
+}
+
+.review-card__comment {
+    margin: 0;
+    line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+    .review-section {
+        margin-top: 24px;
+        padding: 18px;
+    }
+}

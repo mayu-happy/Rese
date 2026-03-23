@@ -1,0 +1,8 @@
+/docker/mysql/data/
+/src/vendor/
+/src/node_modules/
+/src/.env
+/src/.env.testing
+/src/storage/*.key
+/src/bootstrap/cache/*.php
+/src/public/storage
