@@ -69,13 +69,13 @@ Rese（飲食店予約サービスアプリ）
 - genres
 - reviews
 
-![テーブル設計](./images/table-design.png)
+![テーブル設計](./src/images/table-design.png)
 
 ---
 
 ## ER図
 
-![ER図](./images/er-diagram.png)
+![ER図](./src/images/er-diagram.png)
 
 ---
 
