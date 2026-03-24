@@ -5,7 +5,7 @@ Rese（飲食店予約サービスアプリ）
 
 ## 作成した目的
 グループ会社向けの飲食店予約サービスを想定し、外部サービス利用時の手数料負担を抑えながら、自社で予約管理ができる仕組みを構築することを目的として作成しました。  
-店舗情報の閲覧、予約、予約管理、レビュー投稿までを一貫して行えるサービスとして設計・開発しています。
+店舗情報の閲覧、予約、予約管理、レビュー投稿までを一貫して行えるサービスとして設計・開発しました。
 
 ---
 
@@ -69,13 +69,13 @@ Rese（飲食店予約サービスアプリ）
 - genres
 - reviews
 
-![テーブル設計](./src/images/table-design.png)
+![テーブル設計](./images/table-design.png)
 
 ---
 
 ## ER図
 
-![ER図](./src/images/er-diagram.png)
+![ER図](./images/er-diagram.png)
 
 ---
 
@@ -118,7 +118,7 @@ composer install
 cp .env.example .env
 ```
 
-`.env` の DB 設定をこのように変更してください（抜粋）：
+`.env` の DB 設定を以下のように変更してください。
 
 ```env
 DB_CONNECTION=mysql
@@ -129,31 +129,18 @@ DB_USERNAME=laravel_user
 DB_PASSWORD=laravel_pass
 ```
 
-`.env` の MAIL 設定をこのように変更してください（抜粋）：
-
-```env
-MAIL_MAILER=smtp
-MAIL_HOST=mailhog
-MAIL_PORT=1025
-MAIL_USERNAME=null
-MAIL_PASSWORD=null
-MAIL_ENCRYPTION=null
-MAIL_FROM_ADDRESS="no-reply@example.com"
-MAIL_FROM_NAME="${APP_NAME}"
-```
-
-### 5)  アプリケーションキーの作成
-``` bash
+### 5) アプリケーションキーの作成
+```bash
 php artisan key:generate
 ```
 
 ### 6) マイグレーション＆初期データ投入
-``` bash
+```bash
 php artisan migrate --seed
 ```
 
 ### 7) ストレージを公開
-``` bash
+```bash
 php artisan storage:link
 ```
 
@@ -223,134 +210,21 @@ docker compose ps
 
 ---
 
-### 2) 依存導入＆アプリキー作成（初回のみ／PHPコンテナ内で実行）
+### 2) PHPコンテナに入る
 
 ```bash
 docker compose exec php bash
-composer install
-cp -n .env.example .env || true
 ```
 
-> すでに環境構築済みの場合は、このステップはスキップしてOKです。
 
 ---
 
-### 3) テストDB用 `.env.testing` の作成
-
-```bash
-cp .env .env.testing
-php artisan key:generate --env=testing
-```
-
-`.env.testing` 内の DB 設定をテスト用に変更してください（例）：
-
-```env
-DB_CONNECTION=mysql
-DB_HOST=mysql
-DB_PORT=3306
-DB_DATABASE=laravel_test_db
-DB_USERNAME=laravel_user
-DB_PASSWORD=laravel_pass
-```
-
----
-
-### 4) テスト用マイグレーション（testing 環境）
-
-```bash
-php artisan migrate:fresh --env=testing --no-interaction
-```
-
----
-
-### 5) テスト実行
+### 3) テスト実行
 
 ```bash
 php artisan test
 ```
 
-または詳細表示付き：
-
-```bash
-vendor/bin/phpunit --testdox
-```
-
----
-
-## 🧩 トラブルシュート：テスト用DBへのアクセス権エラー
-
-### 💡 発生するエラー例
-
-```bash
-php artisan migrate:fresh --env=testing --no-interaction
-```
-
-実行時に以下のようなエラーが出ることがあります。
-
-```bash
-SQLSTATE[HY000] [1044] Access denied for user 'laravel_user'@'%' to database 'laravel_test_db'
-```
-
----
-
-### 🔍 原因
-
-- MySQL にテスト用データベース `laravel_test_db` がまだ存在しない  
-- またはユーザー `laravel_user` に `laravel_test_db` への権限が付与されていない
-
----
-
-### 🛠 対処手順（Docker + MySQL 環境）
-
-#### 1. MySQLコンテナに入る
-
-```bash
-docker compose exec mysql bash
-```
-
-#### 2. rootユーザーでMySQLにログイン
-
-```bash
-mysql -u root -p
-```
-
-> 💡 パスワードは `docker-compose.yml` で指定した  
-> `MYSQL_ROOT_PASSWORD`（例：`root`）を入力してください。
-
-#### 3. テスト用DBを作成し、権限を付与
-
-```sql
-CREATE DATABASE IF NOT EXISTS laravel_test_db
-  CHARACTER SET utf8mb4
-  COLLATE utf8mb4_unicode_ci;
-
-GRANT ALL PRIVILEGES ON laravel_test_db.* TO 'laravel_user'@'%';
-FLUSH PRIVILEGES;
-EXIT;
-```
-
-#### 4. PHPコンテナでマイグレーション再実行
-
-```bash
-docker compose exec php bash
-php artisan migrate:fresh --env=testing --no-interaction
-```
-
----
-
-### ⚙️ `.env.testing` の設定確認
-
-```env
-DB_CONNECTION=mysql
-DB_HOST=mysql
-DB_PORT=3306
-DB_DATABASE=laravel_test_db
-DB_USERNAME=laravel_user
-DB_PASSWORD=laravel_pass
-```
-
-✅ これで `php artisan migrate:fresh --env=testing` が正常に動作し、  
-PHPUnit テストを実行できる状態になります！
 
 ---
 
